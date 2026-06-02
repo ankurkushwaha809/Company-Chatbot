@@ -32,6 +32,10 @@ graph TD
   D -.-> F
 ```
 
+### RAG Architecture Diagram
+
+![RAG Architecture](assets/rag-architecture.png)
+
 ### How RAG Works
 
 Standard LLMs answer from static, pre-trained knowledge — which leads to **hallucinations** and inability to access private documents.
