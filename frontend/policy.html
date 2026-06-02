@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Policy & Handbook | NovaSync Corp</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- CSS Link -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* Premium Policy Page Specific Styles */
+    .policy-container {
+      margin-top: 110px;
+      margin-bottom: 80px;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 40px;
+      position: relative;
+    }
+
+    /* Sidebar Navigation */
+    .policy-sidebar {
+      position: sticky;
+      top: 105px;
+      height: calc(100vh - 140px);
+      background: var(--bg-secondary);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.01);
+      overflow-y: auto;
+    }
+
+    .sidebar-title {
+      font-family: var(--font-family-title);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--glass-border);
+      padding-bottom: 12px;
+    }
+
+    .search-box {
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 10px 14px 10px 36px;
+      border: 1px solid rgba(15, 23, 42, 0.1);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-family: var(--font-family-body);
+      background: var(--bg-primary);
+      transition: all 0.3s ease;
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--accent-indigo);
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.06);
+    }
+
+    .search-box i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .policy-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      list-style: none;
+    }
+
+    .policy-menu-item a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .policy-menu-item.active a, .policy-menu-item a:hover {
+      background: rgba(79, 70, 229, 0.05);
+      color: var(--accent-indigo);
+    }
+
+    .policy-menu-item.active a {
+      font-weight: 600;
+    }
+
+    /* Content Area */
+    .policy-content-area {
+      background: var(--bg-secondary);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.01);
+      min-height: calc(100vh - 220px);
+    }
+
+    .policy-section {
+      display: none;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    .policy-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .policy-section h2 {
+      font-family: var(--font-family-title);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .policy-section h2 i {
+      color: var(--accent-indigo);
+    }
+
+    .policy-section p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .policy-highlight-card {
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.02) 0%, rgba(37, 99, 235, 0.02) 100%);
+      border: 1px dashed rgba(79, 70, 229, 0.2);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 25px 0;
+    }
+
+    .policy-highlight-card h4 {
+      font-family: var(--font-family-title);
+      font-size: 1.1rem;
+      color: var(--accent-indigo);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .policy-details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 25px;
+    }
+
+    .detail-card {
+      background: var(--bg-primary);
+      border: 1px solid var(--glass-border);
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .detail-card h5 {
+      font-family: var(--font-family-title);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+
+    .detail-card p {
+      font-size: 0.88rem;
+      margin-bottom: 0;
+      line-height: 1.5;
+    }
+
+    /* Leaves Table */
+    .leaves-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+
+    .leaves-table th, .leaves-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .leaves-table th {
+      background-color: rgba(79, 70, 229, 0.03);
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .leaves-table tr:hover {
+      background-color: rgba(0, 0, 0, 0.01);
+    }
+
+    .badge-count {
+      display: inline-block;
+      padding: 2px 8px;
+      background: rgba(37, 99, 235, 0.08);
+      color: var(--accent-blue);
+      font-weight: 700;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .policy-container {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .policy-sidebar {
+        position: relative;
+        top: 0;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Background Grid & Light Accents -->
+  <div class="glow-bg">
+    <div class="glow-sphere sphere-1"></div>
+    <div class="glow-sphere sphere-2"></div>
+  </div>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container nav-container">
+      <div class="logo">
+        <i class="fa-solid fa-cubes logo-icon"></i>
+        <span>NovaSync <span class="logo-corp">Corp</span></span>
+      </div>
+      <nav>
+        <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="index.html#services">Services</a>
+        <a href="javascript:void(0)" onclick="document.getElementById('chatLauncher').click()" class="btn btn-secondary"><i class="fa-solid fa-comments"></i> Talk to AI</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Body Content -->
+  <main class="container">
+    <div class="policy-container">
+      
+      <!-- Left Sidebar Menu -->
+      <aside class="policy-sidebar">
+        <div class="sidebar-title">
+          <i class="fa-solid fa-book-open"></i> Chapters
+        </div>
+        
+        <!-- Search bar -->
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="policySearch" placeholder="Search handbook..." onkeyup="filterPolicies()">
+        </div>
+        
+        <ul class="policy-menu" id="policyMenu">
+          <li class="policy-menu-item active" data-target="overview">
+            <a href="#overview"><i class="fa-solid fa-building"></i> Overview</a>
+          </li>
+          <li class="policy-menu-item" data-target="terms">
+            <a href="#terms"><i class="fa-solid fa-file-contract"></i> Employment Terms</a>
+          </li>
+          <li class="policy-menu-item" data-target="schedule">
+            <a href="#schedule"><i class="fa-solid fa-clock"></i> Work Schedule</a>
+          </li>
+          <li class="policy-menu-item" data-target="leave">
+            <a href="#leave"><i class="fa-solid fa-calendar-day"></i> Leaves & Time Off</a>
+          </li>
+          <li class="policy-menu-item" data-target="remote">
+            <a href="#remote"><i class="fa-solid fa-laptop-house"></i> Remote & Hybrid</a>
+          </li>
+          <li class="policy-menu-item" data-target="security">
+            <a href="#security"><i class="fa-solid fa-shield-halved"></i> Info Security</a>
+          </li>
+          <li class="policy-menu-item" data-target="performance">
+            <a href="#performance"><i class="fa-solid fa-chart-line"></i> Performance</a>
+          </li>
+          <li class="policy-menu-item" data-target="travel">
+            <a href="#travel"><i class="fa-solid fa-plane-departure"></i> Travel & Expense</a>
+          </li>
+          <li class="policy-menu-item" data-target="conduct">
+            <a href="#conduct"><i class="fa-solid fa-user-tie"></i> Conduct</a>
+          </li>
+          <li class="policy-menu-item" data-target="exit">
+            <a href="#exit"><i class="fa-solid fa-door-open"></i> Exit Process</a>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Right Content Panel -->
+      <article class="policy-content-area" id="policyContent">
+        
+        <!-- Section 1: Overview -->
+        <section id="overview" class="policy-section active">
+          <h2><i class="fa-solid fa-building"></i> Company Overview</h2>
+          <p>This organization develops software products for global clients. Employees are expected to align their work with customer success, security, and continuous improvement principles.</p>
+          
+          <div class="policy-highlight-card">
+            <h4><i class="fa-solid fa-circle-info"></i> Key Information</h4>
+            <p style="margin-bottom: 0;">The company overview policy applies across all departments unless a local legal requirement specifies a different approach.</p>
+          </div>
+
+          <div class="policy-details-grid">
+            <div class="detail-card">
+              <h5>Policy Ownership</h5>
+              <p>Questions regarding company overview should be directed to Human Resources or the designated policy owner.</p>
+            </div>
+            <div class="detail-card">
+              <h5>Compliance & Enforcement</h5>
+              <p>Violations connected to company overview may result in corrective action depending on severity and business impact.</p>
+            </div>
+            <div class="detail-card">
+              <h5>Annual Reviews</h5>
+              <p>Annual reviews assess whether updates to company overview are necessary due to organizational growth or regulatory changes.</p>
+            </div>
+          </div>
+
+          <p style="margin-top: 25px;">Employees should retain awareness of updates affecting company overview through official company communications. Training programs may be assigned to reinforce responsibilities associated with company overview.</p>
+          <p>Documented exceptions relating to company overview require written approval from authorized leadership personnel. Records connected with company overview are maintained according to internal governance standards.</p>
+        </section>
+
+        <!-- Section 2: Terms -->
+        <section id="terms" class="policy-section">
+          <h2><i class="fa-solid fa-file-contract"></i> Employment Terms</h2>
+          <p>Employment classifications include permanent, fixed-term, internship, and contractor engagements. Eligibility for benefits depends on employment category and local regulations.</p>
+          
+          <div class="policy-highlight-card">
+            <h4><i class="fa-solid fa-circle-info"></i> Department Scope</h4>
+            <p style="margin-bottom: 0;">The employment terms policy applies across all departments unless a local legal requirement specifies a different approach. Managers are responsible for communicating expectations related to employment terms and ensuring team compliance.</p>
+          </div>
+
+          <div class="policy-details-grid">
+            <div class="detail-card">
+              <h5>Assistance</h5>
+              <p>Questions regarding employment terms should be directed to Human Resources or the designated policy owner.</p>
+            </div>
+            <div class="detail-card">
+              <h5>Corrective Actions</h5>
+              <p>Violations connected to employment terms may result in corrective action depending on severity and business impact.</p>
+            </div>
+            <div class="detail-card">
+              <h5>Exceptions</h5>
+              <p>Documented exceptions relating to employment terms require written approval from authorized leadership personnel.</p>
+            </div>
+          </div>
+
+          <p style="margin-top: 25px;">Annual reviews assess whether updates to employment terms are necessary due to organizational growth or regulatory changes. Employees should retain awareness of updates affecting employment terms through official company communications.</p>
+          <p>Training programs may be assigned to reinforce responsibilities associated with employment terms. Records connected with employment terms are maintained according to internal governance standards.</p>
+        </section>
+
+        <!-- Section 3: Schedule -->
+        <section id="schedule" class="policy-section">
+          <h2><i class="fa-solid fa-clock"></i> Work Schedule</h2>
+          <p>Core collaboration hours are <strong>10:00 AM to 4:00 PM</strong>. Teams may adopt flexible schedules provided business requirements and customer commitments are met.</p>
+          
+          <div class="policy-highlight-card">
+            <h4><i class="fa-solid fa-lightbulb"></i> Flexible Hours</h4>
+            <p style="margin-bottom: 0;">We support work-life integration. While core hours are essential for collaboration, flexible schedules can be discussed and established with team managers.</p>
+          </div>
+
+          <div class="policy-details-grid">
+            <div class="detail-card">
+              <h5>Responsibility</h5>
+              <p>Managers are responsible for communicating expectations related to work schedule and ensuring team compliance.</p>
+            </div>
+            <div class="detail-card">
+              <h5>Inquiries</h5>
+              <p>Questions regarding work schedule should be directed to Human Resources or the designated policy owner.</p>
+            </div>
+            <div class="detail-card">
+              <h5>Compliance</h5>
+              <p>Violations connected to work schedule may result in corrective action depending on severity and business impact.</p>
+            </div>
+          </div>
+
+          <p style="margin-top: 25px;">Annual reviews assess whether updates to work schedule are necessary due to organizational growth or regulatory changes. Employees should retain awareness of updates affecting work schedule through official company communications.</p>
+          <p>Training programs may be assigned to reinforce responsibilities associated with work schedule. Documented exceptions relating to work schedule require written approval from authorized leadership personnel. Records connected with work schedule are maintained according to internal governance standards.</p>
+        </section>
+
+        <!-- Section 4: Leave -->
+        <section id="leave" class="policy-section">
+          <h2><i class="fa-solid fa-calendar-day"></i> Leave and Time Off</h2>
+          <p>Employees receive <strong>24 paid leave days annually</strong>. The breakdown and guidelines are outlined below:</p>
+          
+          <table class="leaves-table">
+            <thead>
+              <tr>
+                <th>Leave Type</th>
+                <th>Annual Allowance</th>
+                <th>Guidelines & Requirements</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Casual Leave</strong></td>
+                <td><span class="badge-count">12 Days</span></td>
+                <td>Designed for short-term personal needs. Requires advance approval from the manager.</td>
+              </tr>
+              <tr>
+                <td><strong>Sick Leave</strong></td>
+                <td><span class="badge-count">6 Days</span></td>
+                <td>For medical emergencies and illnesses. May require medical documentation after three consecutive days.</td>
+              </tr>
+              <tr>
+                <td><strong>Privilege Leave</strong></td>
+                <td><span class="badge-count">6 Days</span></td>
+                <td>Planned holidays and longer time off. Must be requested and approved in advance.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="policy-highlight-card" style="margin-top: 30px;">
+            <h4><i class="fa-solid fa-file-medical"></i> Sick Leave Rule</h4>
+            <p style="margin-bottom: 0;">Sick leave may require medical documentation (doctor certificate) if taken for more than three consecutive days.</p>
+          </div>
+
+          <p>The leave and time off policy applies across all departments unless a local legal requirement specifies a different approach. Managers are responsible for communicating expectations related to leave and time off and ensuring team compliance.</p>
+          <p>Questions regarding leave and time off should be directed to Human Resources or the designated policy owner. Violations connected to leave and time off may result in corrective action depending on severity and business impact.</p>
+          <p>Annual reviews assess whether updates to leave and time off are necessary due to organizational growth or regulatory changes. Employees should retain awareness of updates affecting leave and time off through official company communications.</p>
+          <p>Training programs may be assigned to reinforce responsibilities associated with leave and time off. Documented exceptions require written approval from authorized leadership. Records are maintained according to internal governance standards.</p>
+        </section>
+
+        <!-- Section 5: Remote -->
+        <section id="remote" class="policy-section">
+          <h2><i class="fa-solid fa-laptop-house"></i> Remote and Hybrid Work</h2>
+          <p>Hybrid employees must maintain a secure workspace, use company-approved devices, and ensure reliable internet connectivity during working hours.</p>
+          
+          <div class="policy-highlight-card">
+            <h4><i class="fa-solid fa-shield-halved"></i> Key Requirements</h4>
+            <p style="margin-bottom: 0;">Employees must prioritize security and bandwidth to ensure collaboration is seamless and business data remains confidential.</p>
+          </div>
+
+          <div class="policy-details-grid">
+            <div class="detail-card">
+              <h5>Scope</h5>
+              <p>The remote and hybrid work policy applies across all departments unless a local legal requirement specifies a different approach.</p>
+            </div>
+            <div class="detail-card">
+              <h5>Management</h5>
+              <p>Managers are responsible for communicating expectations related to remote and hybrid work and ensuring team compliance.</p>
+            </div>
+            <div class="detail-card">
+              <h5>Support</h5>
+              <p>Questions regarding remote and hybrid work should be directed to Human Resources or the designated policy owner.</p>
+            </div>
+          </div>
+
+          <p style="margin-top: 25px;">Violations connected to remote and hybrid work may result in corrective action depending on severity and business impact. Annual reviews assess whether updates to remote and hybrid work are necessary due to organizational growth or regulatory changes.</p>
+          <p>Employees should retain awareness of updates affecting remote and hybrid work through official company communications. Training programs may be assigned to reinforce responsibilities. Documented exceptions require written approval from authorized leadership. Records are maintained according to internal governance standards.</p>
+        </section>
+
+        <!-- Section 6: Security -->
+        <section id="security" class="policy-section">
+          <h2><i class="fa-solid fa-shield-halved"></i> Information Security</h2>
+          <p>Confidential information must not be stored on personal cloud services. All business-critical systems require multi-factor authentication (MFA) and approved access controls.</p>
+          
+          <div class="policy-highlight-card">
+            <h4><i class="fa-solid fa-triangle-exclamation"></i> Critical Rule</h4>
+            <p style="margin-bottom: 0;">Strictly no company documents or client files should be synced to personal Google Drive, Dropbox, or OneDrive accounts. Always use the company-approved cloud drives.</p>
+          </div>
+
+          <div class="policy-details-grid">
+            <div class="detail-card">
+              <h5>Scope</h5>
+              <p>The information security policy applies across all departments unless a local legal requirement specifies a different approach.</p>
+            </div>
+            <div class="detail-card">
+              <h5>Compliance</h5>
+              <p>Managers are responsible for communicating expectations related to information security and ensuring team compliance.</p>
+            </div>
+            <div class="detail-card">
+              <h5>Support & Inquiries</h5>
+              <p>Questions regarding information security should be directed to Human Resources or the designated policy owner.</p>
+            </div>
+          </div>
+
+          <p style="margin-top: 25px;">Violations connected to information security may result in corrective action depending on severity and business impact. Annual reviews assess whether updates to information security are necessary due to organizational growth or regulatory changes.</p>
+          <p>Employees should retain awareness of updates affecting information security through official company communications. Training programs may be assigned to reinforce responsibilities. Documented exceptions require written approval from authorized leadership. Records are maintained according to internal governance standards.</p>
+        </section>
+
+        <!-- Section 7: Performance -->
+        <section id="performance" class="policy-section">
+          <h2><i class="fa-solid fa-chart-line"></i> Performance Management</h2>
+          <p>Goal-setting occurs quarterly. Managers evaluate outcomes, collaboration, technical capability, customer impact, and professional growth contributions.</p>
+          
+          <div class="policy-highlight-card">
+            <h4><i class="fa-solid fa-arrows-to-dot"></i> Focus Areas</h4>
+            <p style="margin-bottom: 0;">Performance is evaluated on five key dimensions: Outcomes, Collaboration, Technical Capability, Customer Impact, and Professional Growth.</p>
+          </div>
+
+          <div class="policy-details-grid">
+            <div class="detail-card">
+              <h5>Scope</h5>
+              <p>The performance management policy applies across all departments unless a local legal requirement specifies a different approach.</p>
+            </div>
+            <div class="detail-card">
+              <h5>Role of Managers</h5>
+              <p>Managers are responsible for communicating expectations related to performance management and ensuring team compliance.</p>
+            </div>
+            <div class="detail-card">
+              <h5>Owner</h5>
+              <p>Questions regarding performance management should be directed to Human Resources or the designated policy owner.</p>
+            </div>
+          </div>
+
+          <p style="margin-top: 25px;">Violations connected to performance management may result in corrective action depending on severity and business impact. Annual reviews assess whether updates to performance management are necessary due to organizational growth or regulatory changes.</p>
+          <p>Employees should retain awareness of updates affecting performance management through official company communications. Training programs may be assigned to reinforce responsibilities. Documented exceptions require written approval from authorized leadership. Records are maintained according to internal governance standards.</p>
+        </section>
+
+        <!-- Section 8: Travel -->
+        <section id="travel" class="policy-section">
+          <h2><i class="fa-solid fa-plane-departure"></i> Travel and Expense Policy</h2>
+          <p>Travel bookings should prioritize cost efficiency while meeting business needs. Reimbursement requests must include receipts and approved expense categories.</p>
+          
+          <div class="policy-highlight-card">
+            <h4><i class="fa-solid fa-receipt"></i> Receipts Requirement</h4>
+            <p style="margin-bottom: 0;">Always keep receipts for all travel expenses, meals, and accommodations. No reimbursement is allowed without matching receipts.</p>
+          </div>
+
+          <div class="policy-details-grid">
+            <div class="detail-card">
+              <h5>Scope</h5>
+              <p>The travel and expense policy applies across all departments unless a local legal requirement specifies a different approach.</p>
+            </div>
+            <div class="detail-card">
+              <h5>Communication</h5>
+              <p>Managers are responsible for communicating expectations related to travel and expense policy and ensuring team compliance.</p>
+            </div>
+            <div class="detail-card">
+              <h5>Inquiries</h5>
+              <p>Questions regarding travel and expense policy should be directed to Human Resources or the designated policy owner.</p>
+            </div>
+          </div>
+
+          <p style="margin-top: 25px;">Violations connected to travel and expense policy may result in corrective action depending on severity and business impact. Annual reviews assess whether updates are necessary due to organizational growth or regulatory changes.</p>
+          <p>Employees should retain awareness of updates affecting travel and expense policy through official company communications. Training programs may be assigned to reinforce responsibilities. Documented exceptions require written approval from authorized leadership. Records are maintained according to internal governance standards.</p>
+        </section>
+
+        <!-- Section 9: Conduct -->
+        <section id="conduct" class="policy-section">
+          <h2><i class="fa-solid fa-user-tie"></i> Professional Conduct</h2>
+          <p>Employees must treat colleagues, customers, and partners respectfully. Workplace bullying, discrimination, and retaliation are prohibited.</p>
+          
+          <div class="policy-highlight-card">
+            <h4><i class="fa-solid fa-handshake"></i> Safe Workplace</h4>
+            <p style="margin-bottom: 0;">NovaSync maintains a strict zero-tolerance policy against any form of harassment, discrimination, or bullying. Every team member deserves a respectful working environment.</p>
+          </div>
+
+          <div class="policy-details-grid">
+            <div class="detail-card">
+              <h5>Scope</h5>
+              <p>The professional conduct policy applies across all departments unless a local legal requirement specifies a different approach.</p>
+            </div>
+            <div class="detail-card">
+              <h5>Responsibility</h5>
+              <p>Managers are responsible for communicating expectations related to professional conduct and ensuring team compliance.</p>
+            </div>
+            <div class="detail-card">
+              <h5>Support</h5>
+              <p>Questions regarding professional conduct should be directed to Human Resources or the designated policy owner.</p>
+            </div>
+          </div>
+
+          <p style="margin-top: 25px;">Violations connected to professional conduct may result in corrective action depending on severity and business impact. Annual reviews assess whether updates to professional conduct are necessary due to organizational growth or regulatory changes.</p>
+          <p>Employees should retain awareness of updates affecting professional conduct through official company communications. Training programs may be assigned to reinforce responsibilities. Documented exceptions require written approval from authorized leadership. Records are maintained according to internal governance standards.</p>
+        </section>
+
+        <!-- Section 10: Exit -->
+        <section id="exit" class="policy-section">
+          <h2><i class="fa-solid fa-door-open"></i> Business Continuity and Exit Process</h2>
+          <p>Critical documents must be maintained in shared repositories. During separation, employees must return company assets and complete knowledge-transfer activities.</p>
+          
+          <div class="policy-highlight-card">
+            <h4><i class="fa-solid fa-arrow-rotate-left"></i> Asset Return</h4>
+            <p style="margin-bottom: 0;">Laptops, access cards, monitor screens, and other hardware provided by the company must be returned on or before the last working day.</p>
+          </div>
+
+          <div class="policy-details-grid">
+            <div class="detail-card">
+              <h5>Scope</h5>
+              <p>The business continuity and exit process policy applies across all departments unless a local legal requirement specifies a different approach.</p>
+            </div>
+            <div class="detail-card">
+              <h5>Management</h5>
+              <p>Managers are responsible for communicating expectations related to business continuity and exit process and ensuring team compliance.</p>
+            </div>
+            <div class="detail-card">
+              <h5>Questions</h5>
+              <p>Questions regarding business continuity and exit process should be directed to Human Resources or the designated policy owner.</p>
+            </div>
+          </div>
+
+          <p style="margin-top: 25px;">Violations connected to business continuity and exit process may result in corrective action depending on severity and business impact. Annual reviews assess whether updates are necessary due to organizational growth or regulatory changes.</p>
+          <p>Employees should retain awareness of updates affecting business continuity and exit process through official company communications. Training programs may be assigned to reinforce responsibilities. Documented exceptions require written approval from authorized leadership. Records are maintained according to internal governance standards.</p>
+        </section>
+
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-container">
+      <p>&copy; 2026 NovaSync Corp. All rights reserved. Built with advanced security and trust protocols.</p>
+      <div class="footer-links">
+        <a href="index.html#services">Privacy Policy</a>
+        <a href="index.html#services">Terms of Service</a>
+        <a href="#">Back to Top</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chatbot Widget -->
+  <div class="chatbot-widget">
+    <!-- Chat Welcome Popover -->
+    <div class="chat-popover" id="chatPopover">
+      <button class="popover-close" id="closePopover" aria-label="Dismiss message">&times;</button>
+      <div class="popover-body">
+        <span class="popover-badge">AI Assistant</span>
+        <p>👋 Ask me about leaves, hybrid work, or cloud policy!</p>
+      </div>
+      <div class="popover-arrow"></div>
+    </div>
+
+    <!-- Chat Launcher Button -->
+    <button class="chat-launcher" id="chatLauncher" aria-label="Open Chatbot">
+      <i class="fa-solid fa-comments bubble-icon"></i>
+      <i class="fa-solid fa-xmark close-icon hidden"></i>
+      <span class="pulse-ring"></span>
+    </button>
+
+    <!-- Chat Container -->
+    <div class="chat-container hidden" id="chatContainer">
+      <div class="chat-header">
+        <div class="header-info">
+          <div class="avatar-glow">
+            <i class="fa-solid fa-robot bot-avatar-icon"></i>
+            <span class="online-indicator"></span>
+          </div>
+          <div>
+            <h3>NovaSync Assistant</h3>
+            <p>Online | Policy Expert</p>
+          </div>
+        </div>
+        <button class="close-btn" id="closeChatBtn" aria-label="Close Chat"><i class="fa-solid fa-minus"></i></button>
+      </div>
+
+      <!-- Message Area -->
+      <div class="chat-messages" id="chatMessages">
+        <div class="message bot-message">
+          <div class="message-content">
+            <p>Hello! I am the NovaSync Policy Assistant. Ask me anything about our company handbook, leave details, or hybrid work policies! 👋</p>
+          </div>
+          <span class="msg-time">Just now</span>
+        </div>
+      </div>
+
+      <!-- Chat Input -->
+      <form class="chat-input-area" id="chatForm">
+        <input type="text" id="userInput" placeholder="Type your question here..." autocomplete="off" required>
+        <button type="submit" id="sendBtn" aria-label="Send Message">
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+  
+  <script>
+    // Navigation routing logic based on hash change and click events
+    const menuItems = document.querySelectorAll('.policy-menu-item');
+    const sections = document.querySelectorAll('.policy-section');
+
+    function setActiveTab(targetId) {
+      if (!targetId) return;
+      
+      // Update sidebar active status
+      menuItems.forEach(item => {
+        if (item.getAttribute('data-target') === targetId) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+
+      // Update content section visibility
+      sections.forEach(section => {
+        if (section.getAttribute('id') === targetId) {
+          section.classList.add('active');
+        } else {
+          section.classList.remove('active');
+        }
+      });
+      
+      // Scroll to content view for mobile users
+      if (window.innerWidth <= 900) {
+        document.getElementById('policyContent').scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // Tab clicks handler
+    menuItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = item.getAttribute('data-target');
+        window.location.hash = targetId;
+        setActiveTab(targetId);
+      });
+    });
+
+    // Check hash on page load
+    window.addEventListener('load', () => {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        setActiveTab(hash);
+      }
+    });
+
+    // Handle back/forward navigation
+    window.addEventListener('hashchange', () => {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        setActiveTab(hash);
+      }
+    });
+
+    // Search filter function
+    function filterPolicies() {
+      const input = document.getElementById('policySearch');
+      const filter = input.value.toLowerCase();
+      const items = document.querySelectorAll('.policy-menu-item');
+      
+      items.forEach(item => {
+        const text = item.innerText.toLowerCase();
+        if (text.includes(filter)) {
+          item.style.display = "";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    }
+  </script>
+</body>
+</html>
