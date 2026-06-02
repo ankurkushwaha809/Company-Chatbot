@@ -1,0 +1,29 @@
+{
+  "name": "company-chatbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node prepare.js",
+    "dev": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@langchain/community": "^0.3.59",
+    "@langchain/core": "^1.1.48",
+    "@langchain/google-genai": "^2.1.31",
+    "@langchain/pinecone": "^1.0.3",
+    "@langchain/textsplitters": "^1.0.1",
+    "@pinecone-database/pinecone": "^6.1.4",
+    "dotenv": "^17.4.2",
+    "express": "^4.22.2",
+    "pdf-parse": "^1.1.4"
+  },
+  "overrides": {
+    "@langchain/core": "$@langchain/core"
+  }
+}

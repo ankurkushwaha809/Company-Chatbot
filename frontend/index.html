@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NovaSync Corp | Enterprise Software Engineering & Trust</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- CSS Link -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Hero Background Grid & Light Accents -->
+  <div class="glow-bg">
+    <div class="glow-sphere sphere-1"></div>
+    <div class="glow-sphere sphere-2"></div>
+  </div>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container nav-container">
+      <div class="logo">
+        <i class="fa-solid fa-cubes logo-icon"></i>
+        <span>NovaSync <span class="logo-corp">Corp</span></span>
+      </div>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#metrics">Performance</a>
+        <a href="#policy-info">Handbooks</a>
+        <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="badge"><i class="fa-solid fa-shield-halved"></i> ISO 27001 Certified Enterprise Solutions</div>
+        <h1>Empowering Enterprise Teams with <span class="gradient-text">Intelligent Software</span></h1>
+        <p class="hero-desc">We design, deploy, and maintain high-performance digital engines for global organizations. Engineered for security, customer success, and continuous improvement.</p>
+        <div class="hero-actions">
+          <a href="#services" class="btn btn-primary">Explore Our Services <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="#policy-info" class="btn btn-outline">Policy & Handbook</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Metrics Section -->
+  <section id="metrics" class="metrics-section">
+    <div class="container">
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <h4>99.99%</h4>
+          <p>Service Uptime SLA</p>
+        </div>
+        <div class="metric-card">
+          <h4>15M+</h4>
+          <p>Active Daily Users</p>
+        </div>
+        <div class="metric-card">
+          <h4>Zero</h4>
+          <p>Critical Security Breaches</p>
+        </div>
+        <div class="metric-card">
+          <h4>24/7</h4>
+          <p>Global Engineering Support</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section id="services" class="services-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Core Capabilities</h2>
+        <p>Premium technology platforms engineered to solve complex operational challenges.</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <i class="fa-solid fa-code card-icon"></i>
+          <h3>Custom Software Engineering</h3>
+          <p>Reliable, scalable, and responsive custom solutions crafted to fulfill critical business needs.</p>
+        </div>
+        <div class="card">
+          <i class="fa-solid fa-server card-icon"></i>
+          <h3>Cloud Infrastructure & Devops</h3>
+          <p>State-of-the-art server orchestrations built on high-efficiency cloud infrastructures.</p>
+        </div>
+        <div class="card">
+          <i class="fa-solid fa-lock card-icon"></i>
+          <h3>Advanced Cybersecurity</h3>
+          <p>Fully compliant database security implementations, featuring active MFA access and encryption protocols.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Policy Information / RAG CTA Banner -->
+  <section id="policy-info" class="policy-info-section">
+    <div class="container">
+      <div class="policy-banner">
+        <div class="policy-banner-content">
+          <h3>Need Instant Policy Guidance?</h3>
+          <p>Our virtual assistant is equipped with the latest NovaSync Policy Handbook. Ask about casual leaves, sick leaves, hybrid work guidelines, cloud storage rules, or compliance standards instantly!</p>
+          <a href="javascript:void(0)" onclick="document.getElementById('chatLauncher').click()" class="btn btn-primary"><i class="fa-solid fa-comments"></i> Ask AI Policy Assistant Now</a>
+        </div>
+        <div class="policy-banner-icon">
+          <i class="fa-solid fa-circle-nodes"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-container">
+      <p>&copy; 2026 NovaSync Corp. All rights reserved. Built with advanced security and trust protocols.</p>
+      <div class="footer-links">
+        <a href="#services">Privacy Policy</a>
+        <a href="#services">Terms of Service</a>
+        <a href="#services">Internal Policy Portal</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chatbot Widget -->
+  <div class="chatbot-widget">
+    <!-- Chat Welcome Popover -->
+    <div class="chat-popover" id="chatPopover">
+      <button class="popover-close" id="closePopover" aria-label="Dismiss message">&times;</button>
+      <div class="popover-body">
+        <span class="popover-badge">AI Assistant</span>
+        <p>👋 Ask me about leaves, hybrid work, or cloud policy!</p>
+      </div>
+      <div class="popover-arrow"></div>
+    </div>
+
+    <!-- Chat Launcher Button -->
+    <button class="chat-launcher" id="chatLauncher" aria-label="Open Chatbot">
+      <i class="fa-solid fa-comments bubble-icon"></i>
+      <i class="fa-solid fa-xmark close-icon hidden"></i>
+      <span class="pulse-ring"></span>
+    </button>
+
+    <!-- Chat Container -->
+    <div class="chat-container hidden" id="chatContainer">
+      <div class="chat-header">
+        <div class="header-info">
+          <div class="avatar-glow">
+            <i class="fa-solid fa-robot bot-avatar-icon"></i>
+            <span class="online-indicator"></span>
+          </div>
+          <div>
+            <h3>NovaSync Assistant</h3>
+            <p>Online | Policy Expert</p>
+          </div>
+        </div>
+        <button class="close-btn" id="closeChatBtn" aria-label="Close Chat"><i class="fa-solid fa-minus"></i></button>
+      </div>
+
+      <!-- Message Area -->
+      <div class="chat-messages" id="chatMessages">
+        <div class="message bot-message">
+          <div class="message-content">
+            <p>Hello! I am the NovaSync Policy Assistant. Ask me anything about our company handbook, leave details, or hybrid work policies! 👋</p>
+          </div>
+          <span class="msg-time">Just now</span>
+        </div>
+      </div>
+
+      <!-- Chat Input -->
+      <form class="chat-input-area" id="chatForm">
+        <input type="text" id="userInput" placeholder="Type your question here..." autocomplete="off" required>
+        <button type="submit" id="sendBtn" aria-label="Send Message">
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>
