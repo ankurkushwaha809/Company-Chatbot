@@ -7,7 +7,9 @@
 [![Gemini](https://img.shields.io/badge/Gemini_API-2.5_Flash-4285F4?style=for-the-badge&logo=google-gemini&logoColor=white)](https://deepmind.google/technologies/gemini)
 
 An **Enterprise HR Policy Chatbot** built using **Retrieval-Augmented Generation (RAG)**. It integrates Google Gemini and Pinecone to deliver factually grounded, context-aware answers about company policies (leaves, hybrid work, security rules) with multi-language support (English / Hindi / Hinglish).
-
+ 
+🌐 **Live URL**: [https://company-chatbot-self.vercel.app/](https://company-chatbot-self.vercel.app/)
+ 
 ---
 
 ## 📐 System Architecture
