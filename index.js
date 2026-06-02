@@ -177,3 +177,5 @@ process.on("uncaughtException", (error) => {
   console.error("⚠️ Uncaught Exception thrown:", error);
 });
 
+export default app;
+
