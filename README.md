@@ -34,7 +34,7 @@ graph TD
 
 ### RAG Architecture Diagram
 
-![RAG Architecture](assets/rag-architecture.png)
+![RAG Architecture](assets/Rag-Architecture.png)
 
 ### How RAG Works
 
