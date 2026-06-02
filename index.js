@@ -161,12 +161,14 @@ app.post("/api/chat", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log("\n==========================================");
-  console.log(`   Company Policy Chatbot Running 🤖`);
-  console.log(`   URL: http://localhost:${PORT}`);
-  console.log("==========================================\n");
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log("\n==========================================");
+    console.log(`   Company Policy Chatbot Running 🤖`);
+    console.log(`   URL: http://localhost:${PORT}`);
+    console.log("==========================================\n");
+  });
+}
 
 // Prevent Node process from crashing on unhandled promise rejections or exceptions
 process.on("unhandledRejection", (reason, promise) => {
