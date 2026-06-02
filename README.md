@@ -57,10 +57,13 @@ company-chatbot/
 ├── package.json              # Dependencies & scripts
 ├── .env                      # API keys & config (not committed)
 ├── .gitignore                # Git ignore rules
+├── .npmrc                    # NPM config for legacy peer dependencies
+├── vercel.json               # Vercel deployment & routing configuration
 ├── Company_Policy_Handbook_Test_RAG.pdf  # Source policy document
 │
-├── frontend/                 # Static client served by Express
+├── frontend/                 # Static client served by Express / Vercel
 │   ├── index.html            # Landing page with embedded chatbot widget
+│   ├── policy.html           # Interactive policy handbook page with search & chatbot
 │   ├── style.css             # Premium stylesheet (light theme, glassmorphism)
 │   └── app.js                # Chat UI logic, session management & API calls
 │
@@ -78,7 +81,7 @@ company-chatbot/
 | **Vector DB** | Pinecone | Stores & retrieves document vectors |
 | **Framework** | LangChain.js v0.3 | Orchestrates RAG pipeline (prompts, chains, retrievers) |
 | **Backend** | Express.js v4 | REST API server + static file serving |
-| **Frontend** | Vanilla HTML/CSS/JS | Chat widget UI with markdown rendering |
+| **Frontend** | Vanilla HTML/CSS/JS | Chat widget UI + Interactive Handbook |
 
 ---
 
@@ -132,9 +135,20 @@ npm run dev
 ```
 
 The server starts at **`http://localhost:3000`**. Open this URL in your browser to see the landing page with the chatbot widget.
-
+ 
+### 🌐 6. Deploy to Vercel (Global Hosting)
+ 
+To host this chatbot publicly:
+1. Import the repository in **Vercel**.
+2. Add the following **Environment Variables** in Vercel settings:
+   - `GOOGLE_API_KEY` (Gemini API Key)
+   - `PINECONE_API_KEY` (Pinecone API Key)
+   - `PINECONE_INDEX_NAME` (Pinecone Index Name)
+3. Disable **Deployment Protection** (Vercel Authentication) under *Settings -> Deployment Protection* to make the site publicly accessible.
+4. Deploy! The project is configured with `vercel.json` to route endpoints to serverless and static CDN assets.
+ 
 ---
-
+ 
 ## 💬 How to Use
 
 1. Open `http://localhost:3000` in your browser.
